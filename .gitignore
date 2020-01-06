@@ -1,0 +1,7 @@
+/.vs
+/*/Win32
+/*/x64
+/Win32
+/x64
+*.bat
+*.vcxproj.user
