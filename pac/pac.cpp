@@ -1,4 +1,4 @@
-constexpr bool debug = true;
+constexpr bool debug = false;
 
 #pragma region Global
 
@@ -238,6 +238,11 @@ bool CheckArchive
 	const char * directoryName
 )
 {
+	if constexpr (debug)
+	{
+		PrintFunction();
+	}
+
 	const char * match = CheckSignature(archive);
 	if (!match)
 	{
@@ -269,6 +274,11 @@ void ExtractFiles
 	uint32 archiveSize
 )
 {
+	if constexpr (debug)
+	{
+		PrintFunction();
+	}
+
 	auto & fileCount = *(uint32 *)(archive + 4);
 
 	for (uint32 fileIndex = 0; fileIndex < fileCount; fileIndex++)
@@ -334,7 +344,10 @@ void ExtractFiles
 
 byte8 * CreateArchive(uint32 * saveSize = 0)
 {
-	PrintFunction();
+	if constexpr (debug)
+	{
+		PrintFunction();
+	}
 
 	byte32 error = 0;
 
